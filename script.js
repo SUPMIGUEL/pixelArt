@@ -9,6 +9,7 @@ var cssR = "padding-bottom: 2%; width: 2%; float: left;border:1px solid black; m
 var list = document.getElementsByTagName("div"); 
 var table = document.getElementsByTagName("td");
 var colorSelected = "white";
+var colors = ["#000000","#303030","#505050","#808080","#C8C8C8","#FFFFFF","#FF0000","#FFA500","#FFFF00","#0000FF","#339900","#990066","#A52A2A","#FF69B4","#00FFFF","#66FF00","#D0D0D0","#9370DB","#20B2AA","#006400","#556B2F","#191970","#FFA07A","#CD5C5C","#DC143C","#FFC0CB","#BDB76B","#4B0082","#FF00FF","#ADFF2F","#00FA9A","#4169E1"];
 
 function createBoard(){
 	for (var i = 0; i < 1040; i++) {
@@ -16,26 +17,14 @@ function createBoard(){
 		document.body.appendChild(divNew);
 		div[i].style.cssText = cssR;
 		div[i].style.backgroundColor= "white";
-	if (div[i]===div[0]) {div[i].style.backgroundColor= "white";}
-	if (div[i]===div[1]) {div[i].style.backgroundColor = "black";}
-	if (div[i]===div[2]) {div[i].style.backgroundColor = "yellow";}
-	if (div[i]===div[3]) {div[i].style.backgroundColor = "red";}
-	if (div[i]===div[4]) {div[i].style.backgroundColor = "blue";}
-	if (div[i]===div[5]) {div[i].style.backgroundColor = "green";}
-	if (div[i]===div[6]) {div[i].style.backgroundColor = "purple";}
-	if (div[i]===div[7]) {div[i].style.backgroundColor = "grey";}
-	if (div[i]===div[8]) {div[i].style.backgroundColor = "brown";}
-	if (div[i]===div[9]) {div[i].style.backgroundColor = "orange";}
-	if (div[i]===div[10]) {div[i].style.backgroundColor = "pink";}
-	if (div[i]===div[11]) {div[i].style.backgroundColor = "#00FFFF";}
-	if (div[i]===div[12]) {div[i].style.backgroundColor = "#66FF00";}	
-	if (div[i]===div[13]) {div[i].style.backgroundColor = "#D0D0D0";}
-	
+		if (i<colors.length) {
+			div[i].style.backgroundColor=colors[i];
+		}
 	}
 }
 
 function clicklistener(){
-	for (var i = 14; i < list.length; i++){
+	for (var i = colors.length; i < list.length; i++){
 		list[i].addEventListener("click",clicked);
 	}	
 	for (var j = 0; j < list.length; j++){
@@ -48,27 +37,9 @@ function clicked(){
 }
 
 function clickt(){
-	if (this===div[0]) {colorSelected = "white";}
-	if (this===div[1]) {colorSelected = "black";}
-	if (this===div[2]) {colorSelected = "yellow";}
-	if (this === div[3]) {colorSelected = "red";}
-	if (this === div[4]) {colorSelected = "blue";}
-	if (this === div[5]) {colorSelected = "green";}
-	if (this === div[6]) {colorSelected = "purple";}
-	if (this === div[7]) {colorSelected = "grey";}
-	if (this === div[8]) {colorSelected = "brown";}
-	if (this === div[9]) {colorSelected = "orange";}
-	if (this === div[10]) {colorSelected = "pink";}
-	if (this === div[11]) {colorSelected = "#00FFFF";}
-	if (this === div[12]) {colorSelected = "#66FF00";}	
-	if (this === div[13]) {colorSelected = "#D0D0D0";}
+	for (var i = 0; i < colors.length; i++) {
+		if (this===div[i]){
+			colorSelected = colors[i];
+		}
+	}
 }
-
-/*function getRandomColor() {
-    var hex = '0123456789ABCDEF'.split("");
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color = color + hex[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}*/
